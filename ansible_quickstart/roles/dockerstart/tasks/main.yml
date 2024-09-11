@@ -1,14 +1,40 @@
 ---
 # tasks file for dockerstart
-    - name: Pull image
+    - name: Create Docker bridge network
+      community.docker.docker_network:
+        name: my_bridge_network
+        driver: bridge
+        state: present
+
+    - name: Pull image Apache
       community.docker.docker_image_pull:
         name: evagki/task15
-        tag: ngdef
+        tag: ap
 
-    - name: Start container
+    - name: Start container Apache
       community.docker.docker_container:
-        image: evagki/task15:ngdef
+        image: evagki/task15:ap
+        name: my-apache-container
+        state: started
+        networks:
+          - name: my_bridge_network
+        ports:
+         - "8081:8081"
+         - "8084:8084"
+         - "8085:8085"
+
+    - name: Pull image Nginx
+      community.docker.docker_image_pull:
+        name: evagki/task15
+        tag: ng
+
+    - name: Start container Nginx
+      community.docker.docker_container:
+        image: evagki/task15:ng
         name: my-nginx-container
         state: started
+        networks:
+          - name: my_bridge_network
         ports:
          - "80:80"
+         - "443:443"
