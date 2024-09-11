@@ -1,8 +1,9 @@
-- name: Установка Docker
+- name: Install Docker
   yum:
     name: docker
     state: present
-- name: Запуск и включение Docker
+    
+- name: Start Docker
   systemd:
     name: docker
     enabled: yes
