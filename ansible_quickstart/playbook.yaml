@@ -1,0 +1,9 @@
+- name: Pull and image and start the container
+  hosts: myhosts
+  gather_facts: false
+  become: true
+  gather_facts: yes
+  roles:
+    - updateserver
+    - dockerinstall
+    - dockerstart

@@ -1,0 +1,14 @@
+---
+# tasks file for dockerstart
+    - name: Pull image
+      community.docker.docker_image_pull:
+        name: evagki/task15
+        tag: ngdef
+
+    - name: Start container
+      community.docker.docker_container:
+        image: evagki/task15:ngdef
+        name: my-nginx-container
+        state: started
+        ports:
+         - "80:80"
