@@ -11,6 +11,11 @@
         name: evagki/task15
         tag: ap
 
+    - name: Pull image Nginx
+      community.docker.docker_image_pull:
+        name: evagki/task15
+        tag: ng
+        
     - name: Start container Apache
       community.docker.docker_container:
         image: evagki/task15:ap
@@ -23,10 +28,7 @@
          - "8084:8084"
          - "8085:8085"
 
-    - name: Pull image Nginx
-      community.docker.docker_image_pull:
-        name: evagki/task15
-        tag: ng
+    
 
     - name: Start container Nginx
       community.docker.docker_container:
