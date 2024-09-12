@@ -25,8 +25,7 @@
         tag: latest
         build:
           path: /home/debian/repos/DockerImages/imageapache
-          dockerfile: /Dockerfile
-        source: build
+          dockerfile: Dockerfile
         state: present
 
     - name: "Build Image Nginx"
@@ -35,8 +34,6 @@
         tag: latest
         build:
           path: /home/debian/repos/DockerImages/imagenginx
-          dockerfile: /Dockerfile
-        source: build
         state: present
         
     - name: Start container Apache
