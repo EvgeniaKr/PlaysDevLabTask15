@@ -8,14 +8,15 @@
 
 - name: Add Docker repository on RedHat
   yum_repository:
-    name: docker-ce
+    name: docker
     description: Docker CE Stable - $basearch
     baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
     enabled: yes
     gpgcheck: yes
     gpgkey: https://download.docker.com/linux/centos/gpg
+
 - name: Install Docker
   yum:
-    name: docker-ce
+    name: docker
     state: present
 
