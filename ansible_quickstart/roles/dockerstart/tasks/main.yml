@@ -41,7 +41,7 @@
     - name: Start container Apache
       community.docker.docker_container:
         image: apachename:latest
-        name: my-apache-container
+        name: apache-container
         state: started
         networks:
           - name: my_bridge_network
@@ -59,7 +59,7 @@
     - name: Start container Nginx
       community.docker.docker_container:
         image: nginxname:latest
-        name: my-nginx-container
+        name: nginx-container
         state: started
         networks:
           - name: my_bridge_network
