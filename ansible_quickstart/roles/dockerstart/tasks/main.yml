@@ -17,36 +17,35 @@
     
     - name: Create Docker bridge network
       community.docker.docker_network:
-        name: my_bridge_network
+        name: "{{NAME_NETWORK}}"
         driver: bridge
         state: present
 
     - name: "Build Image Apache"
       docker_image:
-        name: "apachename"        
-        tag: latest
+        name: "{{NEME_APACHE_IMAGE}}"        
+        tag: "{{TAG}}"
         build:
-          path: /home/debian/repos/DockerImages/imageapache
-          dockerfile: Dockerfile
+          path: "{{PATH_APACHE_IMAGE}}"
         source: build
         state: present
 
     - name: "Build Image Nginx"
       docker_image:
-        name: "nginxname"        
-        tag: latest
+        name: "{{NAME_NGINX_IMAGE}}"        
+        tag: "{{TAG}}"
         build:
-          path: /home/debian/repos/DockerImages/imagenginx
+          path: "{{PATH_NGINX_IMAGE}}"
         source: build
         state: present
         
     - name: Start container Apache
       community.docker.docker_container:
-        image: apachename:latest
-        name: apache-container
+        image: "{{NEME_APACHE_IMAGE}}:{{TAG}}"
+        name: "{{NAME_APACHE_CONTAINER}}"
         state: started
         networks:
-          - name: my_bridge_network
+          - name: "{{NAME_NETWORK}}"
         ports:
           - "8081:8081"
           - "8084:8084"
@@ -60,11 +59,11 @@
 
     - name: Start container Nginx
       community.docker.docker_container:
-        image: nginxname:latest
-        name: nginx-container
+        image: "{{NAME_NGINX_IMAGE}}:{{TAG}}"
+        name: "{{NAME_NGINX_CONTAINER}}"
         state: started
         networks:
-          - name: my_bridge_network
+          - name: "{{NAME_NETWORK}}"
         ports:
           - "80:80"
           - "443:443"

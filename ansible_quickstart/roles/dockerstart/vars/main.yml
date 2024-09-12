@@ -13,5 +13,11 @@ KEY_TITLE: Task15dopKey
 KEY_PATH: /home/ubuntu/.ssh/id_ed25519
 GIT_REPO: https://{{ GITHUB_ACCESS_TOKEN }}@github.com/EvgeniaKr/DockerImagePrivate.git
 CLONE_DEST: /home/debian/repos/DockerImages
-
-
+NAME_NETWORK: my_bridge_network
+NEME_APACHE_IMAGE: apachename
+PATH_APACHE_IMAGE: /home/debian/repos/DockerImages/imageapache
+TAG: latest
+NAME_NGINX_IMAGE: nginxname
+PATH_NGINX_IMAGE: /home/debian/repos/DockerImages/imagenginx
+NAME_APACHE_CONTAINER: apache-container
+NAME_NGINX_CONTAINER: nginx-container
