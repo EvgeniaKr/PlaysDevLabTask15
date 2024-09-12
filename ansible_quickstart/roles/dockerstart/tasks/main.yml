@@ -1,42 +1,69 @@
 ---
 # tasks file for dockerstart
+    - name: Clone a github repository
+      git:
+        repo: https://github.com/EvgeniaKr/DockerImages.git
+        dest: /DockerImages
+        clone: yes
+        update: yes
+    
     - name: Create Docker bridge network
       community.docker.docker_network:
         name: my_bridge_network
         driver: bridge
         state: present
 
-    - name: Pull image Apache
-      community.docker.docker_image_pull:
-        name: evagki/task15
-        tag: ap
+    - name: "Build Image Apache"
+      docker_image:
+        name: "apachename"        
+        tag: latest
+        build:
+          path: /DockerImages
+          dockerfile: imageapache/Dockerfile
+        source: build
+        state: present
 
-    - name: Pull image Nginx
-      community.docker.docker_image_pull:
-        name: evagki/task15
-        tag: ng
+    - name: "Build Image Nginx"
+      docker_image:
+        name: "nginxname"        
+        tag: latest
+        build:
+          path: /DockerImages
+          dockerfile: imagenginx/Dockerfile
+        source: build
+        state: present
         
     - name: Start container Apache
       community.docker.docker_container:
-        image: evagki/task15:ap
+        image: apachename:latest
         name: my-apache-container
         state: started
         networks:
           - name: my_bridge_network
         ports:
-         - "8081:8081"
-         - "8084:8084"
-         - "8085:8085"
-
-    
+          - "8081:8081"
+          - "8084:8084"
+          - "8085:8085"
+        env:
+          APACHE_RUN_USER: www-data
+          APACHE_RUN_GROUP: www-data
+        restart_policy: always
+        state: started
+        detach: true
 
     - name: Start container Nginx
       community.docker.docker_container:
-        image: evagki/task15:ng
+        image: nginxname:latest
         name: my-nginx-container
         state: started
         networks:
           - name: my_bridge_network
         ports:
-         - "80:80"
-         - "443:443"
+          - "80:80"
+          - "443:443"
+        restart_policy: always
+        state: started
+        detach: true
+    
+
+    
