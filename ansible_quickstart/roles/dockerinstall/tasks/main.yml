@@ -5,3 +5,9 @@
 
 - include_tasks: install_amazon_linux.yml
   when: ansible_os_family == 'RedHat'
+  
+- name: Start Docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started

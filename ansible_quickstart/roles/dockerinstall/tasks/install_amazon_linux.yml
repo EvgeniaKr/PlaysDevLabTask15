@@ -2,9 +2,4 @@
   yum:
     name: docker
     state: present
-    
-- name: Start Docker
-  systemd:
-    name: docker
-    enabled: yes
-    state: started
+
