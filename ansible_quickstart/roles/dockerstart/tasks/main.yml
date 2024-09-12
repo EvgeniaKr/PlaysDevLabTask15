@@ -1,5 +1,11 @@
 ---
 # tasks file for dockerstart
+    - name: Install Git
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+
     - name: Clone a github repository
       git:
         repo: https://github.com/EvgeniaKr/DockerImages.git
@@ -17,9 +23,7 @@
       docker_image:
         name: "apachename"        
         tag: latest
-        build:
-          path: /DockerImages
-          dockerfile: imageapache/Dockerfile
+        path: /DockerImages/imageapache
         source: build
         state: present
 
@@ -27,9 +31,7 @@
       docker_image:
         name: "nginxname"        
         tag: latest
-        build:
-          path: /DockerImages
-          dockerfile: imagenginx/Dockerfile
+        path: /DockerImages
         source: build
         state: present
         
