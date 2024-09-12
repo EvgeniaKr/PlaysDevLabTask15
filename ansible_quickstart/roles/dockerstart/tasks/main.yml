@@ -23,7 +23,7 @@
       docker_image:
         name: "apachename"        
         tag: latest
-        path: ./DockerImages/DockerImages/imageapache
+        path: /opt/DockerImages/imageapache
         source: build
         state: present
 
@@ -31,7 +31,7 @@
       docker_image:
         name: "nginxname"        
         tag: latest
-        path: ./DockerImages/DockerImages/imagenginx
+        path: /opt/DockerImages/imagenginx
         source: build
         state: present
         
