@@ -9,7 +9,7 @@
     - name: Clone a github repository
       git:
         repo: https://github.com/EvgeniaKr/DockerImages.git
-        dest: /DockerImages
+        dest: /
         clone: yes
         update: yes
     
@@ -31,7 +31,7 @@
       docker_image:
         name: "nginxname"        
         tag: latest
-        path: /DockerImages
+        path: /DockerImages/imagenginx
         source: build
         state: present
         
