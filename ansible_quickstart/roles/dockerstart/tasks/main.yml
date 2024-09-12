@@ -1,7 +1,7 @@
 ---
 # tasks file for dockerstart
     - name: Install Git
-      apt:
+      package:
         name: git
         state: present
         update_cache: yes
