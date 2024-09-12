@@ -11,7 +11,7 @@
         repo: git@github.com:EvgeniaKr/DockerImagePrivate.git
         dest: /home/debian/repos/DockerImages
         accept_hostkey: yes
-        key_file: ~/.ssh/id_ed25519 
+        key_file: /home/ubuntu/.ssh/id_ed25519 
         clone: yes
         update: yes
     
