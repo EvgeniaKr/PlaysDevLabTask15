@@ -8,7 +8,7 @@
 
     - name: Clone a github repository
       git:
-        repo: https://github.com/EvgeniaKr/DockerImages.git
+        repo: git@github.com:EvgeniaKr/DockerImagePrivate.git
         dest: /home/debian/repos/DockerImages
         clone: yes
         update: yes
