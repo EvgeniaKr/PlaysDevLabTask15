@@ -10,9 +10,8 @@ GITHUB_ACCESS_TOKEN: !vault |
           35386362396136323865643130333834626431646164313265626332323838613737333164656336
           6434353364396231386131396562643764386531623762373232
 KEY_TITLE: Task15dopKey
-KEY_PATH: /home/ubuntu/.ssh/id_ed25519.git
-GIT_REPO: https://github.com/EvgeniaKr/DockerImagePrivate.git
-GIT_BRANCH: my_branch
-KNOWN_HOSTS_PATH: /home/ubuntu/.ssh
+KEY_PATH: /home/ubuntu/.ssh/id_ed25519
+GIT_REPO: https://{{ GITHUB_ACCESS_TOKEN }}@github.com/EvgeniaKr/DockerImagePrivate.git
 CLONE_DEST: /home/debian/repos/DockerImages
-GIT_EXECUTABLE: /usr/bin/git
+
+

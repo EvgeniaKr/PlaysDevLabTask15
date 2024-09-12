@@ -6,12 +6,12 @@
         state: present
         update_cache: yes
 
-    - name: Clone a github repository
+    - name: Clone a github private repository
       git:
-        repo: https://{{ GITHUB_ACCESS_TOKEN }}@github.com/EvgeniaKr/DockerImagePrivate.git
-        dest: /home/debian/repos/DockerImages
+        repo: "{{GIT_REPO}}"
+        dest: "{{CLONE_DEST}}"
         accept_hostkey: yes
-        key_file: /home/ubuntu/.ssh/id_ed25519 
+        key_file: "{{KEY_PATH}}"
         clone: yes
         update: yes
     
